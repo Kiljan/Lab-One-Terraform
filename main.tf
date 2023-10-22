@@ -26,18 +26,25 @@ resource "libvirt_domain" "nodeset" {
   }
 }
 
-resource "libvirt_volume" "centos" {
-  name   = var.nodeImageName
-  source = var.nodeGoldenImage
-}
+# Create a new domain 2
+resource "libvirt_domain" "nodeset2" {
+  name      = "node2"
+  vcpu      = var.nodeVcpy
+  memory    = var.nodeMemory
+  running   = var.nodeRunning
+  autostart = var.nodeAutostart
 
-import {
-  to = libvirt_network.kube_network
-  id = "e039e4ec-b35f-4f5b-9860-9234236a4aa2"
-}
+  disk {
+    volume_id = libvirt_volume.centos2.id
+  }
 
-import {
-  to = libvirt_domain.nodeset
-  id = "6d71757d-0f0f-4be4-adff-4298a7df8ec2"  
-}
+  graphics {
+    type = var.nodeGraphics
+  }
 
+  network_interface {
+    network_id     = libvirt_network.kube_network.id
+    addresses      = ["10.17.3.57"]
+    wait_for_lease = true
+  }
+}
