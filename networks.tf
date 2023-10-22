@@ -26,4 +26,9 @@ resource "libvirt_network" "kube_network" {
     enabled = true
   }
 
+  lifecycle {
+    ignore_changes = all
+    prevent_destroy = true
+  }
+
 }
