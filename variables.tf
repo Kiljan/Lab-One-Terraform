@@ -32,3 +32,7 @@ variable "nodeImageName" {
   type    = string
   default = "centos"
 }
+variable "nodeImageName2" {
+  type    = string
+  default = "centos2"
+}
