@@ -27,5 +27,12 @@ pipeline {
                 sh 'terraform apply -auto-approve'
             }
         }
+        stage('SSH copy ID') {
+            steps {
+                sh 'cd /home/vv'
+                sh 'sshpass -f password.txt ssh-copy-id vv@yourserver'
+                sh 'sshpass -f password.txt ssh-copy-id vv@yourserver'
+            }
+        }
     }
 }
