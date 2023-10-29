@@ -3,20 +3,19 @@ provider "libvirt" {
   uri = "qemu:///system"
 }
 
-# Create a new domain
 resource "libvirt_domain" "nodeset" {
-  name      = "node1"
-  vcpu      = var.nodeVcpy
-  memory    = var.nodeMemory
-  running   = var.nodeRunning
-  autostart = var.nodeAutostart
+  name      = "master"
+  vcpu      = var.masterVcpu
+  memory    = var.masterMemory
+  running   = var.stateRunning
+  autostart = var.stateAutostart
 
   disk {
-    volume_id = libvirt_volume.centos.id
+    volume_id = libvirt_volume.masterImageName.id
   }
 
   graphics {
-    type = var.nodeGraphics
+    type = var.stateGraphics
   }
 
   network_interface {
@@ -26,20 +25,19 @@ resource "libvirt_domain" "nodeset" {
   }
 }
 
-# Create a new domain 2
 resource "libvirt_domain" "nodeset2" {
-  name      = "node2"
-  vcpu      = var.nodeVcpy
+  name      = "node1"
+  vcpu      = var.nodeVcpu
   memory    = var.nodeMemory
-  running   = var.nodeRunning
-  autostart = var.nodeAutostart
+  running   = var.stateRunning
+  autostart = var.stateAutostart
 
   disk {
-    volume_id = libvirt_volume.centos2.id
+    volume_id = libvirt_volume.nodeImageName1.id
   }
 
   graphics {
-    type = var.nodeGraphics
+    type = var.stateGraphics
   }
 
   network_interface {
