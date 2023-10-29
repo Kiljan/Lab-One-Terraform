@@ -1,38 +1,53 @@
-variable "nodeVcpy" {
+variable "masterVcpu" {
+  type    = number
+  default = 2
+}
+
+variable "nodeVcpu" {
   type    = number
   default = 1
 }
 
-variable "nodeMemory" {
+variable "masterMemory" {
   type    = number
-  default = 1024
+  default = 4096
 }
 
-variable "nodeRunning" {
+variable "nodeMemory" {
+  type    = number
+  default = 2048
+}
+
+variable "statePool" {
+  type    = string
+  default = "pool"
+}
+
+variable "stateRunning" {
   type    = bool
   default = true
 }
 
-variable "nodeAutostart" {
+variable "stateAutostart" {
   type    = bool
   default = false
 }
 
-variable "nodeGraphics" {
+variable "stateGraphics" {
   type    = string
   default = "vnc"
 }
 
-variable "nodeGoldenImage" {
+variable "stateGoldenImage" {
   type    = string
-  default = "/var/lib/libvirt/images/centos7.0.qcow2"
+  default = "/home/vv/pool/centos7Golden.qcow2"
 }
 
-variable "nodeImageName" {
+variable "masterImageName" {
   type    = string
-  default = "centos"
+  default = "centosmaster"
 }
-variable "nodeImageName2" {
+variable "nodeImageName1" {
   type    = string
-  default = "centos2"
+  default = "centosnode1"
 }
