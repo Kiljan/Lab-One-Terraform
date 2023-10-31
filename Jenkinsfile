@@ -31,6 +31,7 @@ pipeline {
             steps {
                 sh 'sshpass -f /home/vv/password.txt ssh-copy-id vv@10.17.3.56'
                 sh 'sshpass -f /home/vv/password.txt ssh-copy-id vv@10.17.3.57'
+                sh 'sshpass -f /home/vv/password.txt ssh-copy-id vv@10.17.3.58'
             }
         }
     }
