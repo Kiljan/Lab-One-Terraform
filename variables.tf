@@ -47,7 +47,13 @@ variable "masterImageName" {
   type    = string
   default = "centosmaster"
 }
+
 variable "nodeImageName1" {
   type    = string
   default = "centosnode1"
+}
+
+variable "nodeImageName2" {
+  type    = string
+  default = "centosnode2"
 }
