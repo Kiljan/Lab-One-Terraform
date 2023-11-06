@@ -35,3 +35,6 @@ terraform.rc
 
 # Other 
 .terraform.lock.hcl
+creds.tf
+**/files/known_hosts
+**/files/authorized_keys
